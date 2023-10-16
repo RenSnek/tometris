@@ -55,7 +55,7 @@ function handleClick(clickEvent,screen) {
     var clickPos = {x:clickEvent.clientX,y:clickEvent.clientY};
     for (var canvasButton of Object.values(canvasButtons)) {
         if (pointInRect(canvasButton.pos,clickPos) && canvasButton.isInteractable(screen)) {
-            alert(canvasButton.click)
+            alert(canvasButton.id)
             canvasButton.click();
         }
     }
