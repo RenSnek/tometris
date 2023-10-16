@@ -37,7 +37,7 @@ function handleClick(clickEvent) {
     alert("test2");
     var clickPos = {x:clickEvent.clientX,y:clickEvent.clientY};
     for (var canvasButton of Object.values(canvasButtons)) {
-        if (pointInRect(clickPos,canvasButton.pos)) {
+        if (pointInRect(canvasButton.pos,clickPos)) {
             alert("test-"+canvasButton.id);
             canvasButton.click();
         }
