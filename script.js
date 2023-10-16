@@ -17,17 +17,18 @@ canvasui.createCanvasButton(
 
 function draw() {
 
+    ctx.canvas.width  = window.innerWidth;
+    ctx.canvas.height = window.innerHeight;
+
     ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
 
     if (screen == "startmenu") {
     }
 
-    canvasui.drawCanvasButtons(ctx,canvas,screen);
+    canvasui.drawCanvasButtons(ctx,screen);
 }
 
 function gameLoop() {
-    canvas.width  = window.innerWidth;
-    canvas.height = window.innerHeight;
     draw();
     requestAnimationFrame(gameLoop);
 }
