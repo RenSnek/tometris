@@ -11,12 +11,13 @@ canvasui.createCanvasButton(
     {x: "0.5(w-100)", y: "h-200", w: 100, h:50},
     "Start",
     "grey",
-    function(){ alert(screen); screen = "game"; alert(screen); },
+    function(){ screen = "game"; },
     "startmenu"
 );
 
 function draw() {
-    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
 
     if (screen == "startmenu") {
     }
