@@ -21,7 +21,7 @@ function createCanvasButton(id,pos,text,colour) {
 }
 
 function drawCanvasButtons(ctx) {
-    for (var canvasButton of canvasButtons) {
+    for (var canvasButton of Object.values(canvasButtons)) {
         canvasButton.draw(ctx);
     }
 }
