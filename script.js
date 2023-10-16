@@ -22,12 +22,12 @@ function draw() {
     if (screen == "startmenu") {
     }
 
-    canvasui.drawCanvasButtons(ctx,screen);
+    canvasui.drawCanvasButtons(ctx,canvas,screen);
 }
 
 function gameLoop() {
-    ctx.canvas.width  = window.innerWidth;
-    ctx.canvas.height = window.innerHeight;
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
     draw();
     requestAnimationFrame(gameLoop);
 }

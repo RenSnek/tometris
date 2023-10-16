@@ -21,13 +21,13 @@ class CanvasButton {
         return (this.visible && screen == this.screen);
     }
 
-    draw(ctx,screen=this.screen) {
+    draw(ctx,canvas,screen=this.screen) {
         if ( this.isInteractable(screen) ) {
             var literalPos = this.pos
-            if (typeof this.pos.x === "string") { literalPos.x = math.evaluate(this.pos.x,{w:ctx.canvas.width,h:ctx.canvas.height})}
-            if (typeof this.pos.y === "string") { literalPos.y = math.evaluate(this.pos.y,{w:ctx.canvas.width,h:ctx.canvas.height})}
-            if (typeof this.pos.w === "string") { literalPos.w = math.evaluate(this.pos.w,{w:ctx.canvas.width,h:ctx.canvas.height})}
-            if (typeof this.pos.h === "string") { literalPos.h = math.evaluate(this.pos.h,{w:ctx.canvas.width,h:ctx.canvas.height})}
+            if (typeof this.pos.x === "string") { literalPos.x = math.evaluate(this.pos.x,{w:canvas.width,h:canvas.height})}
+            if (typeof this.pos.y === "string") { literalPos.y = math.evaluate(this.pos.y,{w:canvas.width,h:canvas.height})}
+            if (typeof this.pos.w === "string") { literalPos.w = math.evaluate(this.pos.w,{w:canvas.width,h:canvas.height})}
+            if (typeof this.pos.h === "string") { literalPos.h = math.evaluate(this.pos.h,{w:canvas.width,h:canvas.height})}
 
             var col = ctx.fillStyle;
             ctx.fillStyle = this.colour;
@@ -49,10 +49,10 @@ function setCanvasButtonVisibility(id,visible) {
     canvasButtons[id].visible = visible;
 }
 
-function drawCanvasButtons(ctx,screen) {
+function drawCanvasButtons(ctx,canvas,screen) {
     for (var canvasButton of Object.values(canvasButtons)) {
         if (canvasButton.isInteractable) {
-            canvasButton.draw(ctx,screen);
+            canvasButton.draw(ctx,canvas,screen);
         }
     }
 }
