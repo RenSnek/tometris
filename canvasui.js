@@ -37,8 +37,8 @@ class CanvasButton {
     }
 }
 
-function createCanvasButton(id,pos,text,colour,clickCallback = ()=>{}) {
-    canvasButtons.id = new CanvasButton(id,pos,text,colour,clickCallback);
+function createCanvasButton(id,pos,text,colour,clickCallback = ()=>{},screen) {
+    canvasButtons.id = new CanvasButton(id,pos,text,colour,clickCallback,screen);
 }
 
 function setCanvasButtonVisibility(id,visible) {
@@ -54,8 +54,6 @@ function drawCanvasButtons(ctx) {
 function handleClick(clickEvent,screen) {
     var clickPos = {x:clickEvent.clientX,y:clickEvent.clientY};
     for (var canvasButton of Object.values(canvasButtons)) {
-        alert(screen)
-        alert(canvasButton.screen)
         if (pointInRect(canvasButton.pos,clickPos) && canvasButton.isInteractable(screen)) {
             canvasButton.click();
         }
