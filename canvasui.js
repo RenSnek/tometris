@@ -23,8 +23,8 @@ class CanvasButton {
     }
 }
 
-function createCanvasButton(id,pos,text,colour,clickCallback) {
-    canvasButtons.id = new CanvasButton(id,pos,text,colour,clickCallback = ()=>{});
+function createCanvasButton(id,pos,text,colour,clickCallback = ()=>{}) {
+    canvasButtons.id = new CanvasButton(id,pos,text,colour,clickCallback);
 }
 
 function drawCanvasButtons(ctx) {
@@ -38,7 +38,6 @@ function handleClick(clickEvent) {
     var clickPos = {x:clickEvent.clientX,y:clickEvent.clientY};
     for (var canvasButton of Object.values(canvasButtons)) {
         if (pointInRect(canvasButton.pos,clickPos)) {
-            alert(canvasButton.click);
             canvasButton.click();
         }
     }
