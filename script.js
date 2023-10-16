@@ -4,8 +4,8 @@ const ctx = canvas.getContext("2d");
 import * as canvasui from "./canvasui.js"
 
 function draw() {
-    ctx.clearRect(0,0,canvas.width,canvas.height)
-    ctx.drawRect(0,0,canvas.width,canvas.height)
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.fillRect(0,0,canvas.width,canvas.height);
 }
 
 function gameLoop() {
