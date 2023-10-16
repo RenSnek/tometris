@@ -47,7 +47,9 @@ function setCanvasButtonVisibility(id,visible) {
 
 function drawCanvasButtons(ctx) {
     for (var canvasButton of Object.values(canvasButtons)) {
-        canvasButton.draw(ctx);
+        if (canvasButton.isInteractable) {
+            canvasButton.draw(ctx);
+        }
     }
 }
 
