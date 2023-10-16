@@ -11,7 +11,7 @@ canvasui.createCanvasButton(
     {x: "0.5(w-100)", y: "h-200", w: 100, h:50},
     "Start",
     "grey",
-    function(){ screen = "game"; alert(screen) },
+    function(){ alert(screen); screen = "game"; alert(screen); },
     "startmenu"
 );
 
