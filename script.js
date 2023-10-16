@@ -11,7 +11,7 @@ canvasui.createCanvasButton(
     {x: "0.5(w-100)", y: "h-200", w: 100, h:50},
     "Start",
     "grey",
-    function(){ screen = "game" },
+    function(){ screen = "game"; alert(screen) },
     "startmenu"
 );
 
@@ -34,6 +34,5 @@ function gameLoop() {
 requestAnimationFrame(gameLoop);
 
 canvas.onclick = function(event) {
-    alert("test1");
     canvasui.handleClick(event,screen);
 };

@@ -52,7 +52,6 @@ function drawCanvasButtons(ctx) {
 }
 
 function handleClick(clickEvent,screen) {
-    alert("test2");
     var clickPos = {x:clickEvent.clientX,y:clickEvent.clientY};
     for (var canvasButton of Object.values(canvasButtons)) {
         if (pointInRect(canvasButton.pos,clickPos) && canvasButton.isInteractable(screen)) {
