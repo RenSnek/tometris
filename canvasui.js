@@ -35,7 +35,7 @@ class CanvasButton {
             ctx.fillStyle = "black";
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
-            ctx.fillText(Date.now(),this.pos.x + (0.5*this.pos.w), this.pos.y + (0.5*this.pos.h));
+            ctx.fillText(this.text,this.pos.x + (0.5*this.pos.w), this.pos.y + (0.5*this.pos.h));
             ctx.fillStyle = col;
         }
     }
@@ -49,10 +49,10 @@ function setCanvasButtonVisibility(id,visible) {
     canvasButtons[id].visible = visible;
 }
 
-function drawCanvasButtons(ctx) {
+function drawCanvasButtons(ctx,screen) {
     for (var canvasButton of Object.values(canvasButtons)) {
         if (canvasButton.isInteractable) {
-            canvasButton.draw(ctx);
+            canvasButton.draw(ctx,screen);
         }
     }
 }
