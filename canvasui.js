@@ -1,5 +1,5 @@
 function pointInRect(rect,point) {
-    return ((point.x > rect.x) && (point.x < rect.x+rect.w) && (point.y > rect.y) && (point.y < rect.y+rect.h))
+    return ((point.x > rect.x) && (point.x < rect.x+rect.w) && (point.y > rect.y) && (point.y < rect.y+rect.h));
 }
 
 
@@ -12,7 +12,7 @@ class CanvasButton {
         this.pos = pos;
         this.text = text;
         this.colour = colour;
-        this.click = clickCallback
+        this.click = clickCallback;
     }
 
     draw(ctx) {
