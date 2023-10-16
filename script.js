@@ -3,14 +3,12 @@ const ctx = canvas.getContext("2d");
 
 import * as canvasui from "./canvasui.js";
 
-canvasui.createCanvasButton("test",{x:10,y:10,w:100,h:50},"Hello","red", ()=>{
-    alert("hello world");
-});
+var screen = "startmenu";
 
 function draw() {
     ctx.clearRect(0,0,canvas.width,canvas.height);
     
-    canvasui.drawCanvasButtons(ctx);
+    canvasui.drawCanvasButtons(ctx,screen);
 
 }
 
@@ -25,5 +23,5 @@ requestAnimationFrame(gameLoop);
 
 canvas.onclick = function(event) {
     alert("test1");
-    canvasui.handleClick(event);
+    canvasui.handleClick(event,screen);
 };
