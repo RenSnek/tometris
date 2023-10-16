@@ -1,7 +1,7 @@
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 
-import * as canvasui from "./canvasui"
+import * as canvasui from "./canvasui.js"
 
 alert(canvasui.x);
 
