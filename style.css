@@ -8,4 +8,5 @@ body, html {
 canvas {
     margin: 0;
     padding: 0;
+    display: block;
 }
