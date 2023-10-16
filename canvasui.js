@@ -1,11 +1,18 @@
+function pointInRect(rect,point) {
+    return ((point.x > rect.x) && (point.x < rect.x+rect.w) && (point.y > rect.y) && (point.y < rect.y+rect.h))
+}
+
+
+
 var canvasButtons = {};
 
 class CanvasButton {
-    constructor(id,pos,text,colour) {
+    constructor(id,pos,text,colour,clickCallback) {
         this.id = id;
         this.pos = pos;
         this.text = text;
         this.colour = colour;
+        this.click = clickCallback
     }
 
     draw(ctx) {
@@ -16,8 +23,8 @@ class CanvasButton {
     }
 }
 
-function createCanvasButton(id,pos,text,colour) {
-    canvasButtons.id = new CanvasButton(id,pos,text,colour);
+function createCanvasButton(id,pos,text,colour,clickCallback) {
+    canvasButtons.id = new CanvasButton(id,pos,text,colour,clickCallback = ()=>{});
 }
 
 function drawCanvasButtons(ctx) {
@@ -26,4 +33,13 @@ function drawCanvasButtons(ctx) {
     }
 }
 
-export { createCanvasButton, drawCanvasButtons };
+function handleClick(clickEvent) {
+    var clickPos = {x:clickEvent.clientX,y:clickEvent.clientY};
+    for (var canvasButton of Object.values(canvasButtons)) {
+        if (pointInRect(clickPos,canvasButton.pos)) {
+            canvasButton.click();
+        }
+    }
+}
+
+export { createCanvasButton, drawCanvasButtons, handleClick };
