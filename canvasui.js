@@ -34,6 +34,7 @@ function drawCanvasButtons(ctx) {
 }
 
 function handleClick(clickEvent) {
+    alert("test2");
     var clickPos = {x:clickEvent.clientX,y:clickEvent.clientY};
     for (var canvasButton of Object.values(canvasButtons)) {
         if (pointInRect(clickPos,canvasButton.pos)) {
