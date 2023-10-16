@@ -32,6 +32,10 @@ class CanvasButton {
             var col = ctx.fillStyle;
             ctx.fillStyle = this.colour;
             ctx.fillRect(this.pos.x,this.pos.y,this.pos.w,this.pos.h);
+            ctx.fillStyle = "black";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillText(Date.now(),this.pos.x + (0.5*this.pos.w), this.pos.y + (0.5*this.pos.h));
             ctx.fillStyle = col;
         }
     }
