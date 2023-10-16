@@ -26,4 +26,4 @@ function drawCanvasButtons(ctx) {
     }
 }
 
-export { createCanvasButton, drawCanvasButtons }
+export { createCanvasButton, drawCanvasButtons };
