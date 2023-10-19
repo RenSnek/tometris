@@ -10,6 +10,11 @@ import * as canvasui from "./canvasui.js";
 
 var screen = "startmenu";
 
+//Helpful consts
+const tileSize = 20;
+const boardWidth = 10;
+const boardHeight = 20;
+
 //Initialising canvasui elements
 canvasui.createCanvasButton(
     "startButton",
@@ -29,12 +34,17 @@ function draw() {
     ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
 
     if (screen == "startmenu") {
+        
+    } else if (screen == "game") {
+        ctx.fillStyle = "#dddddd";
+        ctx.fillRect((ctx.canvas.width-(tileSize*boardWidth))/2,(ctx.canvas.height-(tileSize*boardHeight))/2,tileSize*boardWidth,tileSize*boardHeight);
     }
 
     canvasui.drawCanvasButtons(ctx,screen);
 }
 
 function gameLoop() {
+
     draw();
     requestAnimationFrame(gameLoop);
 }
