@@ -1,3 +1,8 @@
+window.onerror = function(msg, url, linenumber) {
+    alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
+    return true;
+}
+
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 
