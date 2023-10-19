@@ -4,6 +4,33 @@ var board = []
 const boardWidth = 10;
 const boardHeight = 20;
 
+const blocks = [
+    [ //long piece
+        [0,1,0,0],
+        [0,1,0,0],
+        [0,1,0,0],
+        [0,1,0,0]
+    ],
+    [ // O piece
+        [0,0,0,0],
+        [0,2,2,0],
+        [0,2,2,0],
+        [0,0,0,0] 
+    ],
+    [ //L piece
+        [0,3,3,0],
+        [0,3,0,0],
+        [0,3,0,0],
+        [0,0,0,0]
+    ],
+    [ // J piece
+        [4,4,0,0],
+        [0,4,0,0],
+        [0,4,0,0],
+        [0,0,0,0] 
+    ], //https://alex-hhh.github.io/img/a035/all-tetris-blocks.png
+]
+
 const boardColour = "#dddddd"
 
 const colours = [ //These should be Hue values
@@ -19,6 +46,10 @@ function initBoard() {
             board[i][j] = 0;
         }
     }
+}
+
+function update() {
+
 }
 
 function drawBoard(ctx,tileSize) {
@@ -39,5 +70,7 @@ function drawBoard(ctx,tileSize) {
         }
     }
 }
+
+
 
 export { initBoard, drawBoard }
