@@ -43,3 +43,7 @@ requestAnimationFrame(gameLoop);
 canvas.onclick = function(event) {
     canvasui.handleClick(ctx,event,screen);
 };
+
+canvas.onmousemove = function(event) {
+    canvasui.handleMouseMove(ctx,event,screen);
+};

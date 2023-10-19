@@ -15,6 +15,7 @@ class CanvasButton {
         this.click = clickCallback;
         this.screen = screen;
 
+        this.hovered = false;
         this.visible = true;
     }
 
@@ -34,7 +35,11 @@ class CanvasButton {
     draw(ctx,screen=this.screen) {
         if ( this.isInteractable(screen) ) {
             var col = ctx.fillStyle;
-            ctx.fillStyle = this.colour;
+            if (this.hovered) {
+                ctx.fillStyle = this.hoverColour;
+            } else {
+                ctx.fillStyle = this.colour;
+            }
             ctx.fillRect(this.realPos(ctx).x,this.realPos(ctx).y,this.realPos(ctx).w,this.realPos(ctx).h);
             ctx.fillStyle = "black";
             ctx.textAlign = "center";
@@ -58,6 +63,17 @@ function drawCanvasButtons(ctx,screen) {
     for (var canvasButton of Object.values(canvasButtons)) {
         if (canvasButton.isInteractable) {
             canvasButton.draw(ctx,screen);
+        }
+    }
+}
+
+function handleMouseMove(ctx,moveEvent,screen) {
+    var movePos = {x:moveEvent.clientX,y:moveEvent.clientY};
+    for (var canvasButton of Object.values(canvasButtons)) {
+        if (pointInRect(canvasButton.realPos(ctx),clickPos) && canvasButton.isInteractable(screen)) {
+            canvasButton.hovered = true;
+        } else {
+            canvasButton.hovered = false;
         }
     }
 }
