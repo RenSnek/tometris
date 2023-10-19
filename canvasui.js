@@ -51,7 +51,7 @@ class CanvasButton {
     }
 }
 
-function createCanvasButton(id,pos,text,colour,clickCallback = ()=>{},screen) {
+function createCanvasButton(id,pos,text,colour,hoverColour,clickCallback = ()=>{},screen) {
     canvasButtons.id = new CanvasButton(id,pos,text,colour,hoverColour,clickCallback,screen);
 }
 
