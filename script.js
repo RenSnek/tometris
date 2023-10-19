@@ -13,7 +13,7 @@ var screen = "startmenu";
 //Initialising canvasui elements
 canvasui.createCanvasButton(
     "startButton",
-    {x: "0.5(w-100)", y: "h-200", w: 100, h:50},
+    {x: "0.5(w-100)", y: "(2h)/3", w: 100, h:50},
     "Start",
     "grey",
     function(){ screen = "game"; },
