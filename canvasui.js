@@ -35,7 +35,7 @@ class CanvasButton {
             ctx.fillStyle = "black";
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
-            ctx.fillText(this.text,literalPos.x + (0.5*literalPos.w), literalPos.y + (0.5*literalPos.h));
+            ctx.fillText(literalPos.x,literalPos.x + (0.5*literalPos.w), literalPos.y + (0.5*literalPos.h));
             ctx.fillStyle = col;
         }
     }
