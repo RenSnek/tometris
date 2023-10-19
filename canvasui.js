@@ -70,7 +70,7 @@ function drawCanvasButtons(ctx,screen) {
 function handleMouseMove(ctx,moveEvent,screen) {
     var movePos = {x:moveEvent.clientX,y:moveEvent.clientY};
     for (var canvasButton of Object.values(canvasButtons)) {
-        if (pointInRect(canvasButton.realPos(ctx),clickPos) && canvasButton.isInteractable(screen)) {
+        if (pointInRect(canvasButton.realPos(ctx),movePos) && canvasButton.isInteractable(screen)) {
             canvasButton.hovered = true;
         } else {
             canvasButton.hovered = false;
