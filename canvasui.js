@@ -6,11 +6,12 @@ function pointInRect(rect,point) {
 var canvasButtons = {};
 
 class CanvasButton {
-    constructor(id,pos,text,colour,clickCallback,screen) {
+    constructor(id,pos,text,colour,hoverColour,clickCallback,screen) {
         this.id = id;
         this.pos = pos;
         this.text = text;
         this.colour = colour;
+        this.hoverColour = hoverColour;
         this.click = clickCallback;
         this.screen = screen;
 
@@ -38,6 +39,7 @@ class CanvasButton {
             ctx.fillStyle = "black";
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
+            ctx.font = String(this.realPos(ctx).h-5)+"px Arial";
             ctx.fillText(this.text,this.realPos(ctx).x + (0.5*this.realPos(ctx).w), this.realPos(ctx).y + (0.5*this.realPos(ctx).h));
             ctx.fillStyle = col;
         }
@@ -45,7 +47,7 @@ class CanvasButton {
 }
 
 function createCanvasButton(id,pos,text,colour,clickCallback = ()=>{},screen) {
-    canvasButtons.id = new CanvasButton(id,pos,text,colour,clickCallback,screen);
+    canvasButtons.id = new CanvasButton(id,pos,text,colour,hoverColour,clickCallback,screen);
 }
 
 function setCanvasButtonVisibility(id,visible) {
