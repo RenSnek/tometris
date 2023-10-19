@@ -44,7 +44,7 @@ class CanvasButton {
             ctx.fillStyle = "black";
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
-            ctx.font = String(this.realPos(ctx).h-5)+"px Arial";
+            ctx.font = String(this.realPos(ctx).h / 1.5)+"px Arial";
             ctx.fillText(this.text,this.realPos(ctx).x + (0.5*this.realPos(ctx).w), this.realPos(ctx).y + (0.5*this.realPos(ctx).h));
             ctx.fillStyle = col;
         }
