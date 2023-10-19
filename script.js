@@ -13,8 +13,6 @@ var screen = "startmenu";
 
 //Helpful consts
 const tileSize = 25;
-const boardWidth = 10;
-const boardHeight = 20;
 
 //Initialising canvasui elements
 canvasui.createCanvasButton(
@@ -37,8 +35,7 @@ function draw() {
     if (screen == "startmenu") {
         
     } else if (screen == "game") {
-        ctx.fillStyle = "#dddddd";
-        ctx.fillRect((ctx.canvas.width-(tileSize*boardWidth))/2,(ctx.canvas.height-(tileSize*boardHeight))/2,tileSize*boardWidth,tileSize*boardHeight);
+        tetrisboard.drawBoard(ctx,tileSize);
     }
 
     canvasui.drawCanvasButtons(ctx,screen);
