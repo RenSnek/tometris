@@ -19,6 +19,7 @@ function initBoard(width,height) {
             board[i][j] = 0;
         }
     }
+    alert(board)
     board[0][1] = 1;
 }
 
