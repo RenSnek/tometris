@@ -11,7 +11,7 @@ import * as canvasui from "./canvasui.js";
 var screen = "startmenu";
 
 //Helpful consts
-const tileSize = 20;
+const tileSize = 25;
 const boardWidth = 10;
 const boardHeight = 20;
 
