@@ -19,8 +19,8 @@ function initBoard() {
             board[i][j] = 0;
         }
     }
-    alert(board)
     board[0][1] = 1;
+    alert(board)
 }
 
 function drawBoard(ctx,tileSize) {
