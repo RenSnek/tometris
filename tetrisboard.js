@@ -16,7 +16,7 @@ function initBoard() {
     for(let i = 0; i < boardHeight; i++) {
         board[i] = [];
         for(let j = 0; j < boardWidth; j++) {
-            board[i][j] = 0;
+            board[i][j] = 1;
         }
     }
     board[0][1] = 1;
