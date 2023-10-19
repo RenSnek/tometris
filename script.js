@@ -7,6 +7,7 @@ const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 
 import * as canvasui from "./canvasui.js";
+import * as tetrisboard from "./tetrisboard.js";
 
 var screen = "startmenu";
 
