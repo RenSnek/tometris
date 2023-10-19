@@ -87,4 +87,4 @@ function handleClick(ctx,clickEvent,screen) {
     }
 }
 
-export { createCanvasButton, drawCanvasButtons, handleClick };
+export { createCanvasButton, drawCanvasButtons, handleClick, handleMouseMove };
