@@ -35,8 +35,8 @@ function drawBoard(ctx,tileSize) {
         var row = board[i];
         for(var j = 0; j < row.length; j++) {
             if (colours[row[j]] > -1) {
-                ctx.fillStyle = `hsl(${colours[row[j]]},100,100)`
-                ctx.fillRect(xOffset+(tileSize*j),yOffset+(tileSize*i),tileSize,tileSize)
+                ctx.fillStyle = `hsl(${colours[row[j]]},100%,100%)`;
+                ctx.fillRect(xOffset+(tileSize*j),yOffset+(tileSize*i),tileSize,tileSize);
             } 
         }
     }
