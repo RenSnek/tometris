@@ -23,7 +23,7 @@ class CanvasButton {
 
     draw(ctx,screen=this.screen) {
         if ( this.isInteractable(screen) ) {
-            var literalPos = this.pos
+            var literalPos = { ...this.pos }
             if (typeof this.pos.x === "string") { literalPos.x = math.evaluate(this.pos.x,{w:ctx.canvas.width,h:ctx.canvas.height})}
             if (typeof this.pos.y === "string") { literalPos.y = math.evaluate(this.pos.y,{w:ctx.canvas.width,h:ctx.canvas.height})}
             if (typeof this.pos.w === "string") { literalPos.w = math.evaluate(this.pos.w,{w:ctx.canvas.width,h:ctx.canvas.height})}
@@ -35,7 +35,7 @@ class CanvasButton {
             ctx.fillStyle = "black";
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
-            ctx.fillText(this.pos.x,literalPos.x + (0.5*literalPos.w), literalPos.y + (0.5*literalPos.h));
+            ctx.fillText(this.text,literalPos.x + (0.5*literalPos.w), literalPos.y + (0.5*literalPos.h));
             ctx.fillStyle = col;
         }
     }
