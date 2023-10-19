@@ -21,9 +21,14 @@ canvasui.createCanvasButton(
     "Start",
     "red",
     "#ff5555",
-    function(){ screen = "game"; },
+    function(){ startGame(); },
     "startmenu"
 );
+
+function startGame() {
+    tetrisboard.initBoard();
+    screen = "game";
+}
 
 function draw() {
 

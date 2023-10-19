@@ -6,9 +6,9 @@ const boardHeight = 20;
 
 const boardColour = "#dddddd"
 
-const colours = [
-    boardColour, //0 (empty)
-    "#00eeff",   //1 (long piece, cyan)
+const colours = [ //These should be Hue values
+    -1, //0 (empty)
+    185,   //1 (long piece, cyan)
 ]
 
 function initBoard(width,height) {
@@ -19,11 +19,26 @@ function initBoard(width,height) {
             board[i][j] = 0;
         }
     }
+    board[0][1] = 1;
 }
 
 function drawBoard(ctx,tileSize) {
+    var xOffset = (ctx.canvas.width-(tileSize*boardWidth))/2
+    var yOffset = (ctx.canvas.height-(tileSize*boardHeight))/2
+
+
     ctx.fillStyle = boardColour;
-    ctx.fillRect((ctx.canvas.width-(tileSize*boardWidth))/2,(ctx.canvas.height-(tileSize*boardHeight))/2,tileSize*boardWidth,tileSize*boardHeight);
+    ctx.fillRect(xOffset,yOffset,tileSize*boardWidth,tileSize*boardHeight);
+
+    for(var i = 0; i < board.length; i++) {
+        var row = board[i];
+        for(var j = 0; j < row.length; j++) {
+            if (colours[row[j]] > -1) {
+                ctx.fillStyle = `hsl(${colours[row[j]]},100,100)`
+                ctx.fillRect(xOffset+(tileSize*j),yOffset+(tileSize*i),tileSize,tileSize)
+            } 
+        }
+    }
 }
 
 export { initBoard, drawBoard }
