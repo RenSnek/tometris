@@ -21,21 +21,24 @@ class CanvasButton {
         return (this.visible && screen == this.screen);
     }
 
+    realPos(ctx) {
+        var realPos = { ...this.pos };
+        if (typeof this.pos.x === "string") { realPos.x = math.evaluate(this.pos.x,{w:ctx.canvas.width,h:ctx.canvas.height})}
+        if (typeof this.pos.y === "string") { realPos.y = math.evaluate(this.pos.y,{w:ctx.canvas.width,h:ctx.canvas.height})}
+        if (typeof this.pos.w === "string") { realPos.w = math.evaluate(this.pos.w,{w:ctx.canvas.width,h:ctx.canvas.height})}
+        if (typeof this.pos.h === "string") { realPos.h = math.evaluate(this.pos.h,{w:ctx.canvas.width,h:ctx.canvas.height})}
+        return realPos;
+    }
+
     draw(ctx,screen=this.screen) {
         if ( this.isInteractable(screen) ) {
-            var literalPos = { ...this.pos }
-            if (typeof this.pos.x === "string") { literalPos.x = math.evaluate(this.pos.x,{w:ctx.canvas.width,h:ctx.canvas.height})}
-            if (typeof this.pos.y === "string") { literalPos.y = math.evaluate(this.pos.y,{w:ctx.canvas.width,h:ctx.canvas.height})}
-            if (typeof this.pos.w === "string") { literalPos.w = math.evaluate(this.pos.w,{w:ctx.canvas.width,h:ctx.canvas.height})}
-            if (typeof this.pos.h === "string") { literalPos.h = math.evaluate(this.pos.h,{w:ctx.canvas.width,h:ctx.canvas.height})}
-
             var col = ctx.fillStyle;
             ctx.fillStyle = this.colour;
-            ctx.fillRect(literalPos.x,literalPos.y,literalPos.w,literalPos.h);
+            ctx.fillRect(this.realPos(ctx).x,this.realPos(ctx).y,this.realPos(ctx).w,this.realPos(ctx).h);
             ctx.fillStyle = "black";
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
-            ctx.fillText(this.text,literalPos.x + (0.5*literalPos.w), literalPos.y + (0.5*literalPos.h));
+            ctx.fillText(this.text,this.realPos(ctx).x + (0.5*this.realPos(ctx).w), this.realPos(ctx).y + (0.5*this.realPos(ctx).h));
             ctx.fillStyle = col;
         }
     }
@@ -57,10 +60,10 @@ function drawCanvasButtons(ctx,screen) {
     }
 }
 
-function handleClick(clickEvent,screen) {
+function handleClick(ctx,clickEvent,screen) {
     var clickPos = {x:clickEvent.clientX,y:clickEvent.clientY};
     for (var canvasButton of Object.values(canvasButtons)) {
-        if (pointInRect(canvasButton.pos,clickPos) && canvasButton.isInteractable(screen)) {
+        if (pointInRect(canvasButton.realPos(ctx),clickPos) && canvasButton.isInteractable(screen)) {
             canvasButton.click();
         }
     }

@@ -41,5 +41,5 @@ function gameLoop() {
 requestAnimationFrame(gameLoop);
 
 canvas.onclick = function(event) {
-    canvasui.handleClick(event,screen);
+    canvasui.handleClick(ctx,event,screen);
 };
