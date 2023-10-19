@@ -13,9 +13,9 @@ const colours = [ //These should be Hue values
 
 function initBoard(width,height) {
     board = [];
-    for(let i = 0; i < h; i++) {
+    for(let i = 0; i < height; i++) {
         board[i] = [];
-        for(let j = 0; j < w; j++) {
+        for(let j = 0; j < width; j++) {
             board[i][j] = 0;
         }
     }
