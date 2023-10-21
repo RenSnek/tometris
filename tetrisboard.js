@@ -62,8 +62,10 @@ const colours = [ //These should be Hue values
     100, //7 ( S piece , green  )
 ];
 
+
 var fallingBlockCoords = [0,(boardWidth-4)/2];
 var fallingBlockIndex = 0;
+
 
 function initBoard() {
     board = [];
@@ -101,7 +103,7 @@ function drawBoard(ctx,tileSize) {
     for(var i = 0; i < fallingBlockType.length; i++) {
         var row = fallingBlockType[i];
         for(var j = 0; j < row.length; j++) {
-            if (colours[row[j]] > -1) {
+            if (colours[row[j]] > -2) {
                 ctx.fillStyle = `hsl(${colours[row[j]]},100%,50%)`;
                 ctx.fillRect(xOffset+(tileSize*(j+fallingBlockCoords[0])),yOffset+(tileSize*(i+fallingBlockCoords[1])),tileSize,tileSize);
             } 
