@@ -79,11 +79,11 @@ var controls = {
 };
 
 canvas.addEventListener("keydown", (event) => {
-    alert(event.key)
+    console.log(event.key)
     if (event.isComposing || event.keyCode === 229) {
         return;
     }
-    
+
     if (Object.keys(controls).includes(event.key)) {
         controls[event.key] = true;
     }
