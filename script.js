@@ -78,7 +78,7 @@ var controls = {
     ArrowDown:false
 };
 
-eventTarget.addEventListener("keydown", (event) => {
+canvas.addEventListener("keydown", (event) => {
     if (event.isComposing || event.keyCode === 229) {
         return;
     }
