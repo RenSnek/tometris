@@ -140,10 +140,6 @@ function drawBoard(ctx,tileSize) {
         var row = fallingBlockType[i];
         for(var j = 0; j < row.length; j++) {
             if (colours[row[j]] > -1) {
-                ctx.fillStyle = "black";
-                ctx.font = "10px";
-                ctx.baseline = "top";
-                ctx.fillText(j+","+i,xOffset+(tileSize*(j+fallingBlockCoords[0])),yOffset+(tileSize*(i+fallingBlockCoords[1])));
                 ctx.fillStyle = `hsl(${colours[row[j]]},100%,50%)`;
                 ctx.fillRect(xOffset+(tileSize*(j+fallingBlockCoords[0])),yOffset+(tileSize*(i+fallingBlockCoords[1])),tileSize,tileSize);
             } 
