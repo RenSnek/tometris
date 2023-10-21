@@ -274,10 +274,11 @@ function drawBoard(ctx,tileSize) {
         var row = board[i];
         for(var j = 0; j < row.length; j++) {
             if (colours[row[j]] > -1) {
-                tileImg.style.filter = `hue-rotate(${colours[row[j]]}deg)`;
                 ctx.drawImage(tileImg,xOffset+(tileSize*j),yOffset+(tileSize*i),tileSize,tileSize);
-                //ctx.fillStyle = `hsl(${colours[row[j]]},100%,50%)`;
-                //ctx.fillRect(xOffset+(tileSize*j),yOffset+(tileSize*i),tileSize,tileSize);
+                ctx.globalCompositeOperation = "hue";
+                ctx.fillStyle = `hsl(${colours[row[j]]},100%,50%)`;
+                ctx.fillRect(xOffset+(tileSize*j),yOffset+(tileSize*i),tileSize,tileSize);
+                ctx.globalCompositeOperation = "source-over";
 
             } 
         }
@@ -287,10 +288,11 @@ function drawBoard(ctx,tileSize) {
         var row = fallingBlock[i];
         for(var j = 0; j < row.length; j++) {
             if (colours[row[j]] > -1) {
-                tileImg.style.filter = `hue-rotate(${colours[row[j]]}deg)`;
                 ctx.drawImage(tileImg,xOffset+(tileSize*(j+fallingBlockCoords[0])),yOffset+(tileSize*(i+fallingBlockCoords[1])),tileSize,tileSize);
-                //ctx.fillStyle = `hsl(${colours[row[j]]},100%,50%)`;
-                //ctx.fillRect(xOffset+(tileSize*(j+fallingBlockCoords[0])),yOffset+(tileSize*(i+fallingBlockCoords[1])),tileSize,tileSize);
+                ctx.globalCompositeOperation = "hue";
+                ctx.fillStyle = `hsl(${colours[row[j]]},100%,50%)`;
+                ctx.fillRect(xOffset+(tileSize*(j+fallingBlockCoords[0])),yOffset+(tileSize*(i+fallingBlockCoords[1])),tileSize,tileSize);
+                ctx.globalCompositeOperation = "source-over";
             } 
         }
     }
