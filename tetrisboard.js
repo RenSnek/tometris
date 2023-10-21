@@ -1,4 +1,4 @@
-var board = []
+var board = [];
 
 //Size of the board in tiles
 const boardWidth = 10;
@@ -53,9 +53,9 @@ const blocks = [
         [0,1,2,3],
         [4,5,6,7] 
     ],  //https://alex-hhh.github.io/img/a035/all-tetris-blocks.png
-]
+];
 
-const boardColour = "#dddddd"
+const boardColour = "#bbbbbb";
 
 const colours = [ //These should be Hue values
     -1,  //0 ( empty            )
@@ -85,16 +85,15 @@ function initBoard() {
 
 function update() {
     var fallingBlockObstructed = false;
-    var fallingBlockType = blocks[fallingBlockIndex]
+    var fallingBlockType = blocks[fallingBlockIndex];
     for(var i = 0; i < fallingBlockType.length; i++) {
         var row = fallingBlockType[i];
         for(var j = 0; j < row.length; j++) {
             if (row[j] > 0) {
-                var tileAtBottom = ( i + fallingBlockCoords[1] + 1 >= boardHeight )
+                var tileAtBottom = ( i + fallingBlockCoords[1] + 1 >= boardHeight );
+              	var tileAboveTile = false;
                 if (!tileAtBottom) {
-                    var tileAboveTile = (board[i+fallingBlockCoords[1]+1][j+fallingBlockCoords[0]] > 0)
-                } else {
-                    var tileAboveTile = false;
+                    tileAboveTile = (board[i+fallingBlockCoords[1]+1][j+fallingBlockCoords[0]] > 0);
                 }
                 if (tileAtBottom || tileAboveTile) {
                     fallingBlockObstructed = true;
@@ -133,8 +132,8 @@ function update() {
 }
 
 function drawBoard(ctx,tileSize) {
-    var xOffset = (ctx.canvas.width-(tileSize*boardWidth))/2
-    var yOffset = (ctx.canvas.height-(tileSize*boardHeight))/2
+    var xOffset = (ctx.canvas.width-(tileSize*boardWidth))/2;
+    var yOffset = (ctx.canvas.height-(tileSize*boardHeight))/2;
 
 
     ctx.fillStyle = boardColour;
@@ -150,7 +149,7 @@ function drawBoard(ctx,tileSize) {
         }
     }
 
-    var fallingBlockType = blocks[fallingBlockIndex]
+    var fallingBlockType = blocks[fallingBlockIndex];
     for(var i = 0; i < fallingBlockType.length; i++) {
         var row = fallingBlockType[i];
         for(var j = 0; j < row.length; j++) {
@@ -164,4 +163,4 @@ function drawBoard(ctx,tileSize) {
 
 
 
-export { initBoard, drawBoard, update }
+export { initBoard, drawBoard, update };
