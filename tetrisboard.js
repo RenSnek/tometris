@@ -96,9 +96,6 @@ function update() {
             if (row[j] > 0) {
                 var tileAtBottom = ( i + fallingBlockCoords[1] + 1 >= boardHeight )
                 if (!tileAtBottom) {
-                    if (i == 3) {
-                        alert((j+fallingBlockCoords[0])+","+(i+fallingBlockCoords[1]+1));
-                    }
                     var tileAboveTile = (board[i+fallingBlockCoords[1]+1][j+fallingBlockCoords[0]] > 0)
                 } else {
                     var tileAboveTile = false;
@@ -149,11 +146,6 @@ function drawBoard(ctx,tileSize) {
                 ctx.fillText(j+","+i,xOffset+(tileSize*(j+fallingBlockCoords[0])),yOffset+(tileSize*(i+fallingBlockCoords[1])));
                 ctx.fillStyle = `hsl(${colours[row[j]]},100%,50%)`;
                 ctx.fillRect(xOffset+(tileSize*(j+fallingBlockCoords[0])),yOffset+(tileSize*(i+fallingBlockCoords[1])),tileSize,tileSize);
-                
-                ctx.globalAlpha = 0.5;
-                ctx.fillStyle = "red";
-                ctx.fillRect(xOffset+(tileSize*(j+fallingBlockCoords[0])),yOffset+(tileSize*(i+fallingBlockCoords[1]+1)),tileSize,tileSize);
-                ctx.globalAlpha = 1;
             } 
         }
     }
