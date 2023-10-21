@@ -88,7 +88,7 @@ canvas.addEventListener("keydown", (event) => {
     }
 });
 
-eventTarget.addEventListener("keyup", (event) => {
+canvas.addEventListener("keyup", (event) => {
     if (event.isComposing || event.keyCode === 229) {
         return;
     }
