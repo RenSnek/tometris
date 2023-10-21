@@ -76,7 +76,7 @@ var controls = {
     "ArrowDown":false
 };
 
-canvas.addEventListener("keydown", (event) => {
+canvas.onkeydown = function(event) {
     console.log(event.key)
     if (event.isComposing || event.keyCode === 229) {
         return;
@@ -85,9 +85,9 @@ canvas.addEventListener("keydown", (event) => {
     if (Object.keys(controls).includes(event.key)) {
         controls[event.key] = true;
     }
-});
+};
 
-canvas.addEventListener("keyup", (event) => {
+canvas.onkeyup = function(event) {
     if (event.isComposing || event.keyCode === 229) {
         return;
     }
@@ -95,7 +95,7 @@ canvas.addEventListener("keyup", (event) => {
     if (Object.keys(controls).includes(event.key)) {
         controls[event.key] = false;
     }
-});
+};
 
 //Start game loop
 requestAnimationFrame(gameLoop);
