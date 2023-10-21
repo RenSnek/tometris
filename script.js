@@ -50,7 +50,7 @@ function draw() {
 function gameLoop() {
     tick += 1;
     if (screen == "game") {
-        if (tick % 10 == 0) {
+        if (tick % 25 == 0) {
             tetrisboard.update();
         }
     }
