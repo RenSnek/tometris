@@ -73,7 +73,9 @@ var controls = {
     "ArrowLeft":false,
     "ArrowRight":false,
     "ArrowUp":false,
-    "ArrowDown":false
+    "ArrowDown":false,
+    "z":false,
+    "x":false
 };
 
 document.onkeydown = function(event) {

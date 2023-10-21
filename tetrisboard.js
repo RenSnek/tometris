@@ -71,7 +71,7 @@ const colours = [ //These should be Hue values
 
 var fallingBlockCoords = [ (boardWidth-4)/2 , 0];
 var fallingBlockIndex = 0;
-
+var fallingBlock = blocks[fallingBlockIndex];
 
 function initBoard() {
     board = [];
@@ -83,14 +83,40 @@ function initBoard() {
     }
 }
 
+function rotateGridClockwise(matrix) {
+    const n = matrix.length;
+    const x = Math.floor(n/ 2);
+    const y = n - 1;
+    for (let i = 0; i < x; i++) {
+       for (let j = i; j < y - i; j++) {
+          k = matrix[i][j];
+          matrix[i][j] = matrix[y - j][i];
+          matrix[y - j][i] = matrix[y - i][y - j];
+          matrix[y - i][y - j] = matrix[j][y - i]
+          matrix[j][y - i] = k
+       }
+    }
+    return matrix;
+}
+
+function rotateGridAnticlockwise(matrix) {
+    return rotateGridClockwise(rotateGridClockwise(rotateGridClockwise(matrix))); //Rotating 270deg = rotating -90 deg
+}
+
 function update(tick,controls) {
-    var fallingBlockType = blocks[fallingBlockIndex];
+
+    if (controls["z"]) {
+        fallingBlock = rotateGridAnticlockwise(fallingBlock);
+    }
+    if (controls["x"]) {
+        fallingBlock = rotateGridClockwise(fallingBlock);
+    }
 
     //Left + Right collision check
     var fallingBlockObstructedLeft = false;
     var fallingBlockObstructedRight = false;
-    for(var i = 0; i < fallingBlockType.length; i++) {
-        var row = fallingBlockType[i];
+    for(var i = 0; i < fallingBlock.length; i++) {
+        var row = fallingBlock[i];
         for(var j = 0; j < row.length; j++) {
             if (row[j] > 0) {
                 var tileAtLeftWall = ( j + fallingBlockCoords[0] - 1 < 0 );
@@ -125,8 +151,8 @@ function update(tick,controls) {
 
     //Down collision check
     var fallingBlockObstructedDown = false;
-    for(var i = 0; i < fallingBlockType.length; i++) {
-        var row = fallingBlockType[i];
+    for(var i = 0; i < fallingBlock.length; i++) {
+        var row = fallingBlock[i];
         for(var j = 0; j < row.length; j++) {
             if (row[j] > 0) {
                 var tileAtBottom = ( i + fallingBlockCoords[1] + 1 >= boardHeight );
@@ -147,8 +173,8 @@ function update(tick,controls) {
         }
     } else {
         //Add falling block to board
-        for(var i = 0; i < fallingBlockType.length; i++) {
-            var row = fallingBlockType[i];
+        for(var i = 0; i < fallingBlock.length; i++) {
+            var row = fallingBlock[i];
             for(var j = 0; j < row.length; j++) {
                 if (row[j] > 0) {
                     board[i+fallingBlockCoords[1]][j+fallingBlockCoords[0]] = row[j];
@@ -190,9 +216,8 @@ function drawBoard(ctx,tileSize) {
         }
     }
 
-    var fallingBlockType = blocks[fallingBlockIndex];
-    for(var i = 0; i < fallingBlockType.length; i++) {
-        var row = fallingBlockType[i];
+    for(var i = 0; i < fallingBlock.length; i++) {
+        var row = fallingBlock[i];
         for(var j = 0; j < row.length; j++) {
             if (colours[row[j]] > -1) {
                 ctx.fillStyle = `hsl(${colours[row[j]]},100%,50%)`;
