@@ -252,7 +252,7 @@ function update(tick,controls) {
                     if (k == 0) {
                         board[k] = Array(boardWidth).fill(0);
                     } else {
-                        board[k] = board[k-1];
+                        board[k] = board[k+1];
                     }
                 }
             }
