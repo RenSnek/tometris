@@ -96,6 +96,9 @@ function update() {
             if (row[j] > 0) {
                 var tileAtBottom = ( i + fallingBlockCoords[1] + 1 >= boardHeight )
                 if (!tileAtBottom) {
+                    if (i == 3) {
+                        alert(board[j+fallingBlockCoords[0]][i+fallingBlockCoords[1]+1]);
+                    }
                     var tileAboveTile = (board[j+fallingBlockCoords[0]][i+fallingBlockCoords[1]+1] > 0)
                 } else {
                     var tileAboveTile = false;
