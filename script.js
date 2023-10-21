@@ -49,8 +49,10 @@ function draw() {
 
 function gameLoop() {
     tick += 1;
-    if (tick % 10 == 0) {
-        tetrisboard.update();
+    if (screen == "game") {
+        if (tick % 10 == 0) {
+            tetrisboard.update();
+        }
     }
     draw();
     requestAnimationFrame(gameLoop);
