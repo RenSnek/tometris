@@ -63,7 +63,7 @@ const colours = [ //These should be Hue values
 ];
 
 
-var fallingBlockCoords = [0,(boardWidth-4)/2];
+var fallingBlockCoords = [ (boardWidth-4)/2 , 0];
 var fallingBlockIndex = 0;
 
 
