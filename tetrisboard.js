@@ -78,7 +78,26 @@ function initBoard() {
 }
 
 function update() {
+    var fallingBlockObstructed = false;
+    var fallingBlockType = blocks[fallingBlockIndex]
+    for(var i = 0; i < fallingBlockType.length; i++) {
+        var row = fallingBlockType[i];
+        for(var j = 0; j < row.length; j++) {
+            if (row[j] > 0) {
+                var tileAtBottom = ( j + fallingBlockCoords[1] > boardHeight )
+                var tileAboveTile = (board[i+fallingBlockCoords[0]][j+fallingBlockCoords[1]+1] > 0)
+                if (tileAtBottom || tileAboveTile) {
+                    fallingBlockObstructed = true;
+                }
+            } 
+        }
+    }
 
+    if (!fallingBlockObstructed) {
+        fallingBlockCoords[1] += 1;
+    } else {
+        //Add falling block to board, get new falling block
+    }
 }
 
 function drawBoard(ctx,tileSize) {

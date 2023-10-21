@@ -10,6 +10,7 @@ import * as canvasui from "./canvasui.js";
 import * as tetrisboard from "./tetrisboard.js";
 
 var screen = "startmenu";
+var tick = 0;
 
 //Helpful consts
 const tileSize = 25;
@@ -47,7 +48,10 @@ function draw() {
 }
 
 function gameLoop() {
-
+    tick += 1;
+    if (tick % 10 == 0) {
+        tetrisboard.update();
+    }
     draw();
     requestAnimationFrame(gameLoop);
 }
