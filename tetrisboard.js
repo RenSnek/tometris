@@ -195,6 +195,7 @@ function update(tick,controls) {
         //Get new falling block
         fallingBlockCoords = [ (boardWidth-4)/2 , 0];
         fallingBlockIndex = Math.floor(Math.random() * 7);
+        fallingBlock = blocks[fallingBlockIndex];
     }
 }
 
