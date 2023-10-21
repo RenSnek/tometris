@@ -77,7 +77,7 @@ var controls = {
 };
 
 canvas.onkeydown = function(event) {
-    console.log(event.key)
+    console.log(event)
     if (event.isComposing || event.keyCode === 229) {
         return;
     }
