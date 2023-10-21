@@ -142,7 +142,7 @@ function update(tick,controls) {
     }
 
     if (!fallingBlockObstructedDown) {
-        if (tick % 24 == 0) {
+        if (tick % 24 == 0 || controls["ArrowDown"]) {
             fallingBlockCoords[1] += 1;
         }
     } else {
