@@ -78,8 +78,8 @@ function initBoard() {
     for(let i = 0; i < boardHeight; i++) {
         board[i] = [];
         for(let j = 0; j < boardWidth; j++) {
-            if (Math.random() > 0.75) { 
-                board[i][j] = 1;
+            if (Math.random() > 0.75 && i > 6) { 
+                board[i][j] = Math.floor(Math.random() * 7) + 1;;
             } else {
                 board[i][j] = 0;
             }
