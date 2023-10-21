@@ -103,37 +103,39 @@ function rotateGridAnticlockwise(matrix) {
     return rotateGridClockwise(rotateGridClockwise(rotateGridClockwise(matrix))); //Rotating 270deg = rotating -90 deg
 }
 
-function update(tick,controls) {
-
-    if (controls["z"]) {
-        fallingBlock = rotateGridAnticlockwise(fallingBlock);
-    }
-    if (controls["x"]) {
-        fallingBlock = rotateGridClockwise(fallingBlock);
-    }
-
-    //Left + Right collision check
+function blockObstructedLeft() {
     var fallingBlockObstructedLeft = false;
-    var fallingBlockObstructedRight = false;
     for(var i = 0; i < fallingBlock.length; i++) {
         var row = fallingBlock[i];
         for(var j = 0; j < row.length; j++) {
             if (row[j] > 0) {
                 var tileAtLeftWall = ( j + fallingBlockCoords[0] - 1 < 0 );
-                var tileAtRightWall = ( j + fallingBlockCoords[0] + 1 >= boardWidth );
 
               	var tileToLeft = false;
                 if (!tileAtLeftWall) {
                     tileToLeft = (board[i+fallingBlockCoords[1]][j+fallingBlockCoords[0]-1] > 0);
                 }
 
+                if (tileAtLeftWall || tileToLeft) {
+                    fallingBlockObstructedLeft = true;
+                }
+            } 
+        }
+    }
+    return fallingBlockObstructedLeft;
+}
+
+function blockObstructedRight() {
+    var fallingBlockObstructedRight = false;
+    for(var i = 0; i < fallingBlock.length; i++) {
+        var row = fallingBlock[i];
+        for(var j = 0; j < row.length; j++) {
+            if (row[j] > 0) {
+                var tileAtRightWall = ( j + fallingBlockCoords[0] + 1 >= boardWidth );
+
                 var tileToRight = false;
                 if (!tileAtRightWall) {
                     tileToRight = (board[i+fallingBlockCoords[1]][j+fallingBlockCoords[0]+1] > 0);
-                }
-
-                if (tileAtLeftWall || tileToLeft) {
-                    fallingBlockObstructedLeft = true;
                 }
                 if (tileAtRightWall || tileToRight) {
                     fallingBlockObstructedRight = true;
@@ -141,15 +143,10 @@ function update(tick,controls) {
             } 
         }
     }
-    if (controls["ArrowLeft"] && !fallingBlockObstructedLeft) {
-        fallingBlockCoords[0] -= 1;
-    }
-    if (controls["ArrowRight"] && !fallingBlockObstructedRight) {
-        fallingBlockCoords[0] += 1;
-    }
+    return fallingBlockObstructedRight;
+}
 
-
-    //Down collision check
+function blockObstructedDown() {
     var fallingBlockObstructedDown = false;
     for(var i = 0; i < fallingBlock.length; i++) {
         var row = fallingBlock[i];
@@ -166,8 +163,48 @@ function update(tick,controls) {
             } 
         }
     }
+    return fallingBlockObstructedDown
+}
 
-    if (!fallingBlockObstructedDown) {
+function blockObstructedCurrent() {
+    var fallingBlockObstructed = false;
+    for(var i = 0; i < fallingBlock.length; i++) {
+        var row = fallingBlock[i];
+        for(var j = 0; j < row.length; j++) {
+            if (row[j] > 0) {
+                if (board[i+fallingBlockCoords[1]][j+fallingBlockCoords[0]] > 0) {
+                    fallingBlockObstructed = true;
+                }
+            } 
+        }
+    }
+    return fallingBlockObstructed
+}
+
+function update(tick,controls) {
+
+    if (controls["z"]) {
+        fallingBlock = rotateGridAnticlockwise(fallingBlock);
+        if (blockObstructedCurrent()) {
+            rotateGridClockwise(fallingBlock)
+        }
+    }
+    if (controls["x"]) {
+        fallingBlock = rotateGridClockwise(fallingBlock);
+        if (blockObstructedCurrent()) {
+            rotateGridAntilockwise(fallingBlock)
+        }
+    }
+
+    //Left + Right collision check
+    if (controls["ArrowLeft"] && !blockObstructedLeft()) {
+        fallingBlockCoords[0] -= 1;
+    }
+    if (controls["ArrowRight"] && !blockObstructedRight()) {
+        fallingBlockCoords[0] += 1;
+    }
+
+    if (!blockObstructedDown()) {
         if (tick % 24 == 0 || controls["ArrowDown"]) {
             fallingBlockCoords[1] += 1;
         }
