@@ -70,7 +70,7 @@ const colours = [ //These should be Hue values
 
 
 var fallingBlockCoords = [ (boardWidth-4)/2 , 0];
-var fallingBlockIndex = 7;
+var fallingBlockIndex = 0;
 
 
 function initBoard() {
@@ -107,6 +107,8 @@ function update() {
         fallingBlockCoords[1] += 1;
     } else {
         //Add falling block to board, get new falling block
+        fallingBlockCoords = [ (boardWidth-4)/2 , 0];
+        fallingBlockIndex = (fallingBlockIndex+1) % 7;
     }
 }
 
