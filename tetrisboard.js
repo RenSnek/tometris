@@ -146,6 +146,11 @@ function drawBoard(ctx,tileSize) {
                 ctx.fillText(j+","+i,xOffset+(tileSize*(j+fallingBlockCoords[0])),yOffset+(tileSize*(i+fallingBlockCoords[1])));
                 ctx.fillStyle = `hsl(${colours[row[j]]},100%,50%)`;
                 ctx.fillRect(xOffset+(tileSize*(j+fallingBlockCoords[0])),yOffset+(tileSize*(i+fallingBlockCoords[1])),tileSize,tileSize);
+                
+                ctx.globalAlpha = 0.5;
+                ctx.fillStyle = "red";
+                ctx.fillRect(xOffset+(tileSize*(j+fallingBlockCoords[0])),yOffset+(tileSize*(i+fallingBlockCoords[1]+1)),tileSize,tileSize);
+                ctx.globalAlpha = 1;
             } 
         }
     }
