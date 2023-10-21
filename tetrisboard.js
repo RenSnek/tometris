@@ -132,4 +132,4 @@ function drawBoard(ctx,tileSize) {
 
 
 
-export { initBoard, drawBoard }
+export { initBoard, drawBoard, update }
