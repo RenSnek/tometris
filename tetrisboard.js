@@ -237,6 +237,20 @@ function update(tick,controls) {
         fallingBlockCoords = [ (boardWidth-4)/2 , 0];
         fallingBlockIndex = Math.floor(Math.random() * 7);
         fallingBlock = blocks[fallingBlockIndex];
+
+
+        for(var i = 0; i < board.length; i++) {
+            var row = board[i];
+            var rowClear = true;
+            for(var j = 0; j < row.length; j++) {
+                if (row[j] <= 0) {
+                    rowClear = false;
+                } 
+            }
+            if (rowClear) {
+                board[i] = Array(boardWidth).fill(0);
+            }
+        }
     }
 }
 
