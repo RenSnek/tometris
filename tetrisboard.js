@@ -84,33 +84,64 @@ function initBoard() {
 }
 
 function update(tick,controls) {
-    var fallingBlockObstructed = false;
     var fallingBlockType = blocks[fallingBlockIndex];
 
-    if (controls["ArrowLeft"]) {
+    //Left + Right collision check
+    var fallingBlockObstructedLeft = false;
+    var fallingBlockObstructedRight = false;
+    for(var i = 0; i < fallingBlockType.length; i++) {
+        var row = fallingBlockType[i];
+        for(var j = 0; j < row.length; j++) {
+            if (row[j] > 0) {
+                var tileAtLeftWall = ( j + fallingBlockCoords[0] - 1 <= 0 );
+                var tileAtRightWall = ( j + fallingBlockCoords[0] + 1 >= boardWidth );
+
+              	var tileToLeft = false;
+                if (!tileAtLeftWall) {
+                    tileToLeft = (board[i+fallingBlockCoords[1]][j+fallingBlockCoords[0]-1] > 0);
+                }
+
+                var tileToRight = false;
+                if (!tileAtRightWall) {
+                    tileToRight = (board[i+fallingBlockCoords[1]][j+fallingBlockCoords[0]+1] > 0);
+                }
+
+                if (tileAtLeftWall || tileToLeft) {
+                    fallingBlockObstructedLeft = true;
+                }
+                if (tileAtRightWall || tileToRight) {
+                    fallingBlockObstructedRight = true;
+                }
+            } 
+        }
+    }
+    if (controls["ArrowLeft"] && !fallingBlockObstructedLeft) {
         fallingBlockCoords[0] -= 1;
     }
-    if (controls["ArrowRight"]) {
+    if (controls["ArrowRight"] && !fallingBlockObstructedRight) {
         fallingBlockCoords[0] += 1;
     }
 
+
+    //Down collision check
+    var fallingBlockObstructedDown = false;
     for(var i = 0; i < fallingBlockType.length; i++) {
         var row = fallingBlockType[i];
         for(var j = 0; j < row.length; j++) {
             if (row[j] > 0) {
                 var tileAtBottom = ( i + fallingBlockCoords[1] + 1 >= boardHeight );
-              	var tileAboveTile = false;
+              	var tileBelow = false;
                 if (!tileAtBottom) {
-                    tileAboveTile = (board[i+fallingBlockCoords[1]+1][j+fallingBlockCoords[0]] > 0);
+                    tileBelow = (board[i+fallingBlockCoords[1]+1][j+fallingBlockCoords[0]] > 0);
                 }
-                if (tileAtBottom || tileAboveTile) {
-                    fallingBlockObstructed = true;
+                if (tileAtBottom || tileBelow) {
+                    fallingBlockObstructedDown = true;
                 }
             } 
         }
     }
 
-    if (!fallingBlockObstructed) {
+    if (!fallingBlockObstructedDown) {
         if (tick % 24 == 0) {
             fallingBlockCoords[1] += 1;
         }
