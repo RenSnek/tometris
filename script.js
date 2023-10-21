@@ -76,7 +76,7 @@ var controls = {
     "ArrowDown":false
 };
 
-canvas.onkeydown = function(event) {
+document.onkeydown = function(event) {
     console.log(event)
     if (event.isComposing || event.keyCode === 229) {
         return;
@@ -87,7 +87,7 @@ canvas.onkeydown = function(event) {
     }
 };
 
-canvas.onkeyup = function(event) {
+document.onkeyup = function(event) {
     if (event.isComposing || event.keyCode === 229) {
         return;
     }
