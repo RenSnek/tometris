@@ -78,11 +78,7 @@ function initBoard() {
     for(let i = 0; i < boardHeight; i++) {
         board[i] = [];
         for(let j = 0; j < boardWidth; j++) {
-            if (Math.random() > 0.75 && i > 6) { 
-                board[i][j] = Math.floor(Math.random() * 7) + 1;;
-            } else {
-                board[i][j] = 0;
-            }
+            board[i][j] = 0;
         }
     }
 }
@@ -110,10 +106,29 @@ function update() {
     if (!fallingBlockObstructed) {
         fallingBlockCoords[1] += 1;
     } else {
-        //Add falling block to board, get new falling block
+        //Add falling block to board
+        for(var i = 0; i < fallingBlockType.length; i++) {
+            var row = fallingBlockType[i];
+            for(var j = 0; j < row.length; j++) {
+                if (row[j] > 0) {
+                    board[i+fallingBlockCoords[1]][j+fallingBlockCoords[0]] = row[j];
+                    /*
+                    var tileAtBottom = ( i + fallingBlockCoords[1] + 1 >= boardHeight )
+                    if (!tileAtBottom) {
+                        var tileAboveTile = (board[i+fallingBlockCoords[1]+1][j+fallingBlockCoords[0]] > 0)
+                    } else {
+                        var tileAboveTile = false;
+                    }
+                    if (tileAtBottom || tileAboveTile) {
+                        fallingBlockObstructed = true;
+                    }
+                    */
+                } 
+            }
+        } 
+        //Get new falling block
         fallingBlockCoords = [ (boardWidth-4)/2 , 0];
         fallingBlockIndex = (fallingBlockIndex+1) % 7;
-        initBoard();
     }
 }
 
