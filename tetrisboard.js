@@ -89,9 +89,9 @@ function update() {
     for(var i = 0; i < fallingBlockType.length; i++) {
         var row = fallingBlockType[i];
         for(var j = 0; j < row.length; j++) {
-            alert(i+","+j+"="+(i+fallingBlockCoords[0])+","+(j+fallingBlockCoords[1]));
             if (row[j] > 0) {
-                var tileAtBottom = ( i + fallingBlockCoords[1] > boardHeight )
+                alert("Tile Coords:"+(j+fallingBlockCoords[1])+"\nBoardHeight:"+boardHeight)
+                var tileAtBottom = ( j + fallingBlockCoords[1] > boardHeight )
                 if (!tileAtBottom) {
                     var tileAboveTile = (board[i+fallingBlockCoords[0]][j+fallingBlockCoords[1]+1] > 0)
                 } else {
