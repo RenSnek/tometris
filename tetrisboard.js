@@ -248,7 +248,13 @@ function update(tick,controls) {
                 } 
             }
             if (rowClear) {
-                board[i] = Array(boardWidth).fill(0);
+                for(var k = 0; k <= i; k++) {
+                    if (k == 0) {
+                        board[k] = Array(boardWidth).fill(0);
+                    } else {
+                        board[k] = board[k-1];
+                    }
+                }
             }
         }
     }
