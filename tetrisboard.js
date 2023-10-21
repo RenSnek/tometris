@@ -99,7 +99,7 @@ function update() {
                     if (i == 3) {
                         alert((j+fallingBlockCoords[0])+","+(i+fallingBlockCoords[1]+1));
                     }
-                    var tileAboveTile = (board[j+fallingBlockCoords[0]][i+fallingBlockCoords[1]+1] > 0)
+                    var tileAboveTile = (board[i+fallingBlockCoords[1]+1][j+fallingBlockCoords[0]] > 0)
                 } else {
                     var tileAboveTile = false;
                 }
