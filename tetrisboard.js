@@ -78,7 +78,11 @@ function initBoard() {
     for(let i = 0; i < boardHeight; i++) {
         board[i] = [];
         for(let j = 0; j < boardWidth; j++) {
-            board[i][j] = 0;
+            if (Math.random() > 0.75) { 
+                board[i][j] = 1;
+            } else {
+                board[i][j] = 0;
+            }
         }
     }
 }
@@ -109,6 +113,7 @@ function update() {
         //Add falling block to board, get new falling block
         fallingBlockCoords = [ (boardWidth-4)/2 , 0];
         fallingBlockIndex = (fallingBlockIndex+1) % 7;
+        initBoard();
     }
 }
 
