@@ -85,7 +85,11 @@ function update() {
         for(var j = 0; j < row.length; j++) {
             if (row[j] > 0) {
                 var tileAtBottom = ( j + fallingBlockCoords[1] > boardHeight )
-                var tileAboveTile = (board[i+fallingBlockCoords[0]][j+fallingBlockCoords[1]+1] > 0)
+                if (!tileAtBottom) {
+                    var tileAboveTile = (board[i+fallingBlockCoords[0]][j+fallingBlockCoords[1]+1] > 0)
+                } else {
+                    var tileAboveTile = false;
+                }
                 if (tileAtBottom || tileAboveTile) {
                     fallingBlockObstructed = true;
                 }
