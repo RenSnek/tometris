@@ -28,14 +28,38 @@ const blocks = [
         [0,4,0,0],
         [0,4,0,0],
         [0,0,0,0] 
-    ], //https://alex-hhh.github.io/img/a035/all-tetris-blocks.png
+    ],
+    [ // T piece
+        [0,5,0,0],
+        [5,5,5,0],
+        [0,0,0,0],
+        [0,0,0,0] 
+    ],
+    [ // Z piece
+        [0,6,0,0],
+        [6,6,0,0],
+        [6,0,0,0],
+        [0,0,0,0] 
+    ],
+    [ // S piece
+        [7,0,0,0],
+        [7,7,0,0],
+        [0,7,0,0],
+        [0,0,0,0] 
+    ],  //https://alex-hhh.github.io/img/a035/all-tetris-blocks.png
 ]
 
 const boardColour = "#dddddd"
 
 const colours = [ //These should be Hue values
-    -1, //0 (empty)
-    185,   //1 (long piece, cyan)
+    -1,  //0 ( empty            )
+    185, //1 ( I piece , cyan   )
+    60,  //2 ( O piece , yellow )
+    35,  //3 ( L piece , orange )
+    240, //4 ( J piece , blue   )
+    275, //5 ( T piece , purple )
+    0,   //6 ( Z piece , red    )
+    100, //7 ( S piece , green  )
 ]
 
 function initBoard() {
