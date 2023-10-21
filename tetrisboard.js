@@ -172,7 +172,11 @@ function blockObstructedCurrent() {
         var row = fallingBlock[i];
         for(var j = 0; j < row.length; j++) {
             if (row[j] > 0) {
-                if (board[i+fallingBlockCoords[1]][j+fallingBlockCoords[0]] > 0) {
+                var tilePastBottom = ( i + fallingBlockCoords[1] >= boardHeight );
+                var tilePastLeftWall = ( j + fallingBlockCoords[0] < 0 );
+                var tilePastRightWall = ( j + fallingBlockCoords[0] >= boardWidth );
+                var blocksOverlapping = (board[i+fallingBlockCoords[1]][j+fallingBlockCoords[0]] > 0)
+                if (blocksOverlapping || tilePastBottom || tilePastLeftWall || tilePastRightWall) {
                     fallingBlockObstructed = true;
                 }
             } 
