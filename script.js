@@ -72,10 +72,10 @@ canvas.onmousemove = function(event) {
 };
 
 var controls = {
-    ArrowLeft:false,
-    ArrowRight:false,
-    ArrowUp:false,
-    ArrowDown:false
+    "ArrowLeft":false,
+    "ArrowRight":false,
+    "ArrowUp":false,
+    "ArrowDown":false
 };
 
 canvas.addEventListener("keydown", (event) => {
@@ -83,6 +83,7 @@ canvas.addEventListener("keydown", (event) => {
         return;
     }
 
+    alert(event.key)
     if (Object.keys(controls).includes(event.key)) {
         controls[event.key] = true;
     }

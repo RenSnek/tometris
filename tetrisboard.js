@@ -87,10 +87,10 @@ function update(tick,controls) {
     var fallingBlockObstructed = false;
     var fallingBlockType = blocks[fallingBlockIndex];
 
-    if (controls.ArrowLeft) {
+    if (controls["ArrowLeft"]) {
         fallingBlockCoords[0] -= 1;
     }
-    if (controls.ArrowRight) {
+    if (controls["ArrowRight"]) {
         fallingBlockCoords[0] += 1;
     }
 
