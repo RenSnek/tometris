@@ -248,11 +248,11 @@ function update(tick,controls) {
                 } 
             }
             if (rowClear) {
-                for(var k = 0; k <= i; k++) {
+                for(var k = i; k >= 0; k--) {
                     if (k == 0) {
                         board[k] = Array(boardWidth).fill(0);
                     } else {
-                        board[k] = board[k+1];
+                        board[k] = board[k-1];
                     }
                 }
             }
