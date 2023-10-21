@@ -196,7 +196,7 @@ function update(tick,controls) {
     if (controls["x"]) {
         fallingBlock = rotateGridClockwise(fallingBlock);
         if (blockObstructedCurrent()) {
-            fallingBlock = rotateGridAntilockwise(fallingBlock);
+            fallingBlock = rotateGridAnticlockwise(fallingBlock);
         }
     }
 
