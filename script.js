@@ -58,8 +58,6 @@ function gameLoop() {
     requestAnimationFrame(gameLoop);
 }
 
-requestAnimationFrame(gameLoop);
-
 
 //Controls handling
 
@@ -98,3 +96,6 @@ canvas.addEventListener("keyup", (event) => {
         controls[event.key] = false;
     }
 });
+
+//Start game loop
+requestAnimationFrame(gameLoop);
