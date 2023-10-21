@@ -60,7 +60,10 @@ const colours = [ //These should be Hue values
     275, //5 ( T piece , purple )
     0,   //6 ( Z piece , red    )
     100, //7 ( S piece , green  )
-]
+];
+
+var fallingBlockCoords = [0,(boardWidth-4)/2];
+var fallingBlockIndex = 0;
 
 function initBoard() {
     board = [];
@@ -90,6 +93,17 @@ function drawBoard(ctx,tileSize) {
             if (colours[row[j]] > -1) {
                 ctx.fillStyle = `hsl(${colours[row[j]]},100%,50%)`;
                 ctx.fillRect(xOffset+(tileSize*j),yOffset+(tileSize*i),tileSize,tileSize);
+            } 
+        }
+    }
+
+    var fallingBlockType = blocks[fallingBlockIndex]
+    for(var i = 0; i < fallingBlockType.length; i++) {
+        var row = fallingBlockType[i];
+        for(var j = 0; j < row.length; j++) {
+            if (colours[row[j]] > -1) {
+                ctx.fillStyle = `hsl(${colours[row[j]]},100%,50%)`;
+                ctx.fillRect(xOffset+(tileSize*(j+fallingBlockCoords[0])),yOffset+(tileSize*(i+fallingBlockCoords[1])),tileSize,tileSize);
             } 
         }
     }
