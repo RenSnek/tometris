@@ -275,7 +275,7 @@ function drawBoard(ctx,tileSize) {
         for(var j = 0; j < row.length; j++) {
             if (colours[row[j]] > -1) {
                 ctx.drawImage(tileImg,xOffset+(tileSize*j),yOffset+(tileSize*i),tileSize,tileSize);
-                ctx.globalCompositeOperation = "hue";
+                ctx.globalCompositeOperation = "color";
                 ctx.fillStyle = `hsl(${colours[row[j]]},100%,50%)`;
                 ctx.fillRect(xOffset+(tileSize*j),yOffset+(tileSize*i),tileSize,tileSize);
                 ctx.globalCompositeOperation = "source-over";
@@ -289,7 +289,7 @@ function drawBoard(ctx,tileSize) {
         for(var j = 0; j < row.length; j++) {
             if (colours[row[j]] > -1) {
                 ctx.drawImage(tileImg,xOffset+(tileSize*(j+fallingBlockCoords[0])),yOffset+(tileSize*(i+fallingBlockCoords[1])),tileSize,tileSize);
-                ctx.globalCompositeOperation = "hue";
+                ctx.globalCompositeOperation = "color";
                 ctx.fillStyle = `hsl(${colours[row[j]]},100%,50%)`;
                 ctx.fillRect(xOffset+(tileSize*(j+fallingBlockCoords[0])),yOffset+(tileSize*(i+fallingBlockCoords[1])),tileSize,tileSize);
                 ctx.globalCompositeOperation = "source-over";
