@@ -50,8 +50,8 @@ function draw() {
 function gameLoop() {
     tick += 1;
     if (screen == "game") {
-        if (tick % 25 == 0) {
-            tetrisboard.update();
+        if (tick % 12 == 0) {
+            tetrisboard.update(tick,controls);
         }
     }
     draw();
@@ -60,6 +60,9 @@ function gameLoop() {
 
 requestAnimationFrame(gameLoop);
 
+
+//Controls handling
+
 canvas.onclick = function(event) {
     canvasui.handleClick(ctx,event,screen);
 };
@@ -67,3 +70,30 @@ canvas.onclick = function(event) {
 canvas.onmousemove = function(event) {
     canvasui.handleMouseMove(ctx,event,screen);
 };
+
+var controls = {
+    ArrowLeft:false,
+    ArrowRight:false,
+    ArrowUp:false,
+    ArrowDown:false
+};
+
+eventTarget.addEventListener("keydown", (event) => {
+    if (event.isComposing || event.keyCode === 229) {
+        return;
+    }
+
+    if (Object.keys(controls).includes(event.key)) {
+        controls[event.key] = true;
+    }
+});
+
+eventTarget.addEventListener("keyup", (event) => {
+    if (event.isComposing || event.keyCode === 229) {
+        return;
+    }
+    
+    if (Object.keys(controls).includes(event.key)) {
+        controls[event.key] = false;
+    }
+});

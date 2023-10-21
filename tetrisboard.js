@@ -83,9 +83,17 @@ function initBoard() {
     }
 }
 
-function update() {
+function update(tick,controls) {
     var fallingBlockObstructed = false;
     var fallingBlockType = blocks[fallingBlockIndex];
+
+    if (controls.ArrowLeft) {
+        fallingBlockCoords[0] -= 1;
+    }
+    if (controls.ArrowRight) {
+        fallingBlockCoords[0] += 1;
+    }
+
     for(var i = 0; i < fallingBlockType.length; i++) {
         var row = fallingBlockType[i];
         for(var j = 0; j < row.length; j++) {
@@ -103,7 +111,7 @@ function update() {
     }
 
     if (!fallingBlockObstructed) {
-        fallingBlockCoords[1] += 1;
+        fallingBlockCoords[1] += tick % 2;
     } else {
         //Add falling block to board
         for(var i = 0; i < fallingBlockType.length; i++) {
