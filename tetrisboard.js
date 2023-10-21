@@ -88,7 +88,7 @@ function update() {
                 if (!tileAtBottom) {
                     var tileAboveTile = (board[i+fallingBlockCoords[0]][j+fallingBlockCoords[1]+1] > 0)
                 } else {
-                    print(j + fallingBlockCoords[1])
+                    alert(j + fallingBlockCoords[1])
                     var tileAboveTile = false;
                 }
                 if (tileAtBottom || tileAboveTile) {
