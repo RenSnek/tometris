@@ -93,7 +93,7 @@ function update(tick,controls) {
         var row = fallingBlockType[i];
         for(var j = 0; j < row.length; j++) {
             if (row[j] > 0) {
-                var tileAtLeftWall = ( j + fallingBlockCoords[0] - 1 <= 0 );
+                var tileAtLeftWall = ( j + fallingBlockCoords[0] - 1 < 0 );
                 var tileAtRightWall = ( j + fallingBlockCoords[0] + 1 >= boardWidth );
 
               	var tileToLeft = false;
