@@ -90,7 +90,7 @@ function update() {
         var row = fallingBlockType[i];
         for(var j = 0; j < row.length; j++) {
             if (row[j] > 0) {
-                var tileAtBottom = ( j + fallingBlockCoords[1] + 1 >= boardHeight )
+                var tileAtBottom = ( i + fallingBlockCoords[1] + 1 >= boardHeight )
                 if (!tileAtBottom) {
                     var tileAboveTile = (board[i+fallingBlockCoords[0]][j+fallingBlockCoords[1]+1] > 0)
                 } else {
@@ -137,7 +137,8 @@ function drawBoard(ctx,tileSize) {
             if (colours[row[j]] > -1) {
                 ctx.fillStyle = "black";
                 ctx.font = "10px";
-                ctx.fillText(i+","+j,xOffset+(tileSize*(j+fallingBlockCoords[0])),yOffset+(tileSize*(i+fallingBlockCoords[1])));
+                ctx.baseline = "top";
+                ctx.fillText(j+","+i,xOffset+(tileSize*(j+fallingBlockCoords[0])),yOffset+(tileSize*(i+fallingBlockCoords[1])));
                 ctx.fillStyle = `hsl(${colours[row[j]]},100%,50%)`;
                 ctx.fillRect(xOffset+(tileSize*(j+fallingBlockCoords[0])),yOffset+(tileSize*(i+fallingBlockCoords[1])),tileSize,tileSize);
             } 
