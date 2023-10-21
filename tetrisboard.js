@@ -186,13 +186,13 @@ function update(tick,controls) {
     if (controls["z"]) {
         fallingBlock = rotateGridAnticlockwise(fallingBlock);
         if (blockObstructedCurrent()) {
-            rotateGridClockwise(fallingBlock)
+            fallingBlock = rotateGridClockwise(fallingBlock);
         }
     }
     if (controls["x"]) {
         fallingBlock = rotateGridClockwise(fallingBlock);
         if (blockObstructedCurrent()) {
-            rotateGridAntilockwise(fallingBlock)
+            fallingBlock = rotateGridAntilockwise(fallingBlock);
         }
     }
 
