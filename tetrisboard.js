@@ -111,7 +111,9 @@ function update(tick,controls) {
     }
 
     if (!fallingBlockObstructed) {
-        fallingBlockCoords[1] += tick % 24;
+        if (tick % 24 == 0) {
+            fallingBlockCoords[1] += ;
+        }
     } else {
         //Add falling block to board
         for(var i = 0; i < fallingBlockType.length; i++) {
