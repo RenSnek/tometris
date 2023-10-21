@@ -46,6 +46,12 @@ const blocks = [
         [7,7,0,0],
         [0,7,0,0],
         [0,0,0,0] 
+    ],
+    [ // Test piece
+        [0,1,2,3],
+        [4,5,6,7],
+        [0,1,2,3],
+        [4,5,6,7] 
     ],  //https://alex-hhh.github.io/img/a035/all-tetris-blocks.png
 ]
 
@@ -64,7 +70,7 @@ const colours = [ //These should be Hue values
 
 
 var fallingBlockCoords = [ (boardWidth-4)/2 , 0];
-var fallingBlockIndex = 0;
+var fallingBlockIndex = 8;
 
 
 function initBoard() {
@@ -84,6 +90,7 @@ function update() {
         var row = fallingBlockType[i];
         for(var j = 0; j < row.length; j++) {
             if (row[j] > 0) {
+                alert(i+","+j+"="+fallingBlockType[i][j]+"="+row[j]);
                 var tileAtBottom = ( i + fallingBlockCoords[1] > boardHeight )
                 if (!tileAtBottom) {
                     var tileAboveTile = (board[i+fallingBlockCoords[0]][j+fallingBlockCoords[1]+1] > 0)
