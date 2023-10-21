@@ -1,5 +1,8 @@
 var board = [];
 
+var tileImg = new Image();
+tileImg.src = "assets/block.png";
+
 //Size of the board in tiles
 const boardWidth = 10;
 const boardHeight = 20;
@@ -264,7 +267,6 @@ function drawBoard(ctx,tileSize) {
     var xOffset = (ctx.canvas.width-(tileSize*boardWidth))/2;
     var yOffset = (ctx.canvas.height-(tileSize*boardHeight))/2;
 
-
     ctx.fillStyle = boardColour;
     ctx.fillRect(xOffset,yOffset,tileSize*boardWidth,tileSize*boardHeight);
 
@@ -272,8 +274,11 @@ function drawBoard(ctx,tileSize) {
         var row = board[i];
         for(var j = 0; j < row.length; j++) {
             if (colours[row[j]] > -1) {
-                ctx.fillStyle = `hsl(${colours[row[j]]},100%,50%)`;
-                ctx.fillRect(xOffset+(tileSize*j),yOffset+(tileSize*i),tileSize,tileSize);
+                tileImg.style.filter = `hue-rotate(${colours[row[j]]}deg)`;
+                ctx.drawImage(tileImg,xOffset+(tileSize*j),yOffset+(tileSize*i),tileSize,tileSize);
+                //ctx.fillStyle = `hsl(${colours[row[j]]},100%,50%)`;
+                //ctx.fillRect(xOffset+(tileSize*j),yOffset+(tileSize*i),tileSize,tileSize);
+
             } 
         }
     }
@@ -282,8 +287,10 @@ function drawBoard(ctx,tileSize) {
         var row = fallingBlock[i];
         for(var j = 0; j < row.length; j++) {
             if (colours[row[j]] > -1) {
-                ctx.fillStyle = `hsl(${colours[row[j]]},100%,50%)`;
-                ctx.fillRect(xOffset+(tileSize*(j+fallingBlockCoords[0])),yOffset+(tileSize*(i+fallingBlockCoords[1])),tileSize,tileSize);
+                tileImg.style.filter = `hue-rotate(${colours[row[j]]}deg)`;
+                ctx.drawImage(tileImg,xOffset+(tileSize*j),yOffset+(tileSize*i),tileSize,tileSize);
+                //ctx.fillStyle = `hsl(${colours[row[j]]},100%,50%)`;
+                //ctx.fillRect(xOffset+(tileSize*(j+fallingBlockCoords[0])),yOffset+(tileSize*(i+fallingBlockCoords[1])),tileSize,tileSize);
             } 
         }
     }
